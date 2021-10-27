@@ -30,7 +30,7 @@ jobs:
   
             SG_ID=sg-0a3a1d6cbfb75935c
 
-            ~/bin/aws ec2 authorize-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
+            ~/bin/aws/aws ec2 authorize-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
               --protocol tcp --port 22 --cidr $PUBLIC_IP/24
 
             sleep 5
@@ -40,7 +40,7 @@ jobs:
             EC2_PUBLIC_DNS=ec2-52-79-123-136.ap-northeast-2.compute.amazonaws.com
             ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS \
 
-            ~/bin/aws ec2 revoke-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
+            ~/bin/aws/aws ec2 revoke-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
               --protocol tcp --port 22 --cidr $PUBLIC_IP/24
 
 ############
