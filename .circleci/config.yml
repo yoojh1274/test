@@ -17,8 +17,6 @@ jobs:
       
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - "a8:14:a7:83:15:d9:c1:d3:2f:15:95:26:af:ec:1a:e4"
       - run:
           name: Deploy Over SSH
           command: ssh ubuntu@10.123.0.88
