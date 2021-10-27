@@ -17,7 +17,7 @@ jobs:
       - checkout
       - run: python --version
       - run: ifconfig
-      - run: pwd
+      - run: scp -r -o StrictHostKeyChecking=no ./ ubuntu@10.123.1.14:/scloud/test
 
 ############
 # Workflows
