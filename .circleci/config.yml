@@ -17,7 +17,7 @@ jobs:
       - checkout
       - run: python --version
       - run: ifconfig
-      - run: scp api.py
+      - run: pwd
 
 ############
 # Workflows
