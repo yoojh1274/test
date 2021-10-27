@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - run: python --version
-      - run: ip addr | grep inet
+      - run: ifconfig
 
 ############
 # Workflows
