@@ -18,7 +18,7 @@ jobs:
     steps:
       - run:
           name: Deploy Over SSH
-          command: ssh ubuntu@52.79.123.136
+          command: ssh -o StrictHostKeyChecking=no ubuntu@52.79.123.136
 
 ############
 # Workflows
