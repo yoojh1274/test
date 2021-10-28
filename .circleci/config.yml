@@ -27,13 +27,10 @@ jobs:
           #destination: python_app
       - run:
           name: list python file
-          command: ls
+          command: hostname -I
       - run:
           name: ip
           command: ifconfig
-      - run:
-          name: scp
-          command: scp -o StrictHostKeyChecking=no -P 12312 tests.py ubuntu@13.209.100.150:/scloud/test
-      - run:
-          name: who
-          command: who
+      #- run:
+          #name: scp
+          #command: scp -o StrictHostKeyChecking=no -P 12312 tests.py ubuntu@13.209.100.150:/scloud/test
