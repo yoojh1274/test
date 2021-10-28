@@ -27,4 +27,4 @@ jobs:
       - run:
           name: location
           command: |
-            which test.py
+            which tests.py
