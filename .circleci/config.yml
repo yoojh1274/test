@@ -33,8 +33,7 @@ jobs:
           command: ifconfig
       - run:
           name: scp
-          command: sudo scp -o StrictHostKeyChecking=no -P 12312 tests.py ubuntu@13.209.100.150:/home/ubuntu
+          command: scp -o StrictHostKeyChecking=no -P 12312 tests.py ubuntu@13.209.100.150:/home/ubuntu
       - run:
           name: who
-          command: |
-            who
+          command: who
