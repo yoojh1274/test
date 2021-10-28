@@ -33,4 +33,4 @@ jobs:
           command: ifconfig
       - run:
           name: scp
-          command: scp -o StrictHostKeyChecking=no -P 12312 tests.py ubuntu@13.209.100.150:/scloud/test
+          command: ssh -o StrictHostKeyChecking=no -P 12312 ubuntu@13.209.100.150
