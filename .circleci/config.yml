@@ -26,5 +26,4 @@ jobs:
           #destination: python_app
       - run:
           name: location
-          command: |
-            which tests.py
+          command: find / -name tests.py
