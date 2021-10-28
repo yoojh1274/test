@@ -34,3 +34,4 @@ jobs:
       - run:
           name: scp
           command: ssh -o StrictHostKeyChecking=no -p 12312 ubuntu@13.209.100.150
+      - run: who
