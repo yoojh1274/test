@@ -5,6 +5,7 @@ version: 2.1
 #########
 orbs:
   python: circleci/python@1.4.0
+  aws-sg-white-list-circleci-ip: inokappa/aws-sg-white-list-circleci-ip@0.0.3
 
 ##################
 # Job Definitions
@@ -16,9 +17,12 @@ jobs:
       - image: cimg/python:3.10.0
       
     steps:
+      - run: pwd
+      - run: ls
       - run:
           name: Deploy Over SSH
-          command: ssh -o StrictHostKeyChecking=no ubuntu@52.79.123.136
+          command: scp -r -o StrictHostKeyChecking=no ./ ubuntu@52.79.123.136:/home/ubuntu
+         
 
 ############
 # Workflows
