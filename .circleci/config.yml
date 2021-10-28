@@ -25,5 +25,5 @@ jobs:
           #path: test-reports/
           #destination: python_app
       - run:
-          name: location
-          command: find / -name tests.py
+          name: list python file
+          command: ls
