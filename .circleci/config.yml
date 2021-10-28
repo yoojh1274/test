@@ -20,7 +20,7 @@ jobs:
       - run: ls
       - run:
           name: test
-          command: find / -name jaehyun.py
+          command: sudo find / -name jaehyun.py
           #name: Deploy Over SSH
           #command: scp -r -o StrictHostKeyChecking=no ./* ubuntu@52.79.123.136:/home/ubuntu
          
