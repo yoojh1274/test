@@ -28,6 +28,6 @@ jobs:
       - run:
           name: list python file
           command: ls
-      - run 
+      - run:
           name: ip
           command: ifconfig
