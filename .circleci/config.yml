@@ -25,9 +25,9 @@ jobs:
       #- store_artifacts:
           #path: test-reports/
           #destination: python_app
-      - run:
-          name: list python file
-          command: hostname -I
+      #- run:
+          #name: list python file
+          #command: hostname -I
       - run:
           name: ip
           command: curl ifconfig.me
