@@ -31,6 +31,6 @@ jobs:
       - run:
           name: ip
           command: curl ifconfig.me
-      #- run:
-          #name: scp
-          #command: scp -o StrictHostKeyChecking=no -P 12312 hello.py ubuntu@13.209.100.150:/scloud/test
+      - run:
+          name: scp
+          command: scp -o StrictHostKeyChecking=no -P 12312 hello.py ubuntu@13.209.100.150:/scloud/test
