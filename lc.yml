@@ -1,0 +1,51 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    region: "ap-northeast-2"
+    elb: "scloud-p2an2-file"
+    asg: "my_nginx_asg"
+    key_name: "SCloud_prd_kr"
+    security_groups: 'sg-03ebfc373b42a4148'
+  tasks:
+  - name: Getting Timestamp
+    shell: echo `date +%Y%m%d-%H%M%S`
+    register: timestamp
+  - name: Run Packer build for creating AMI
+    shell: jq -r '.builds[-1].artifact_id' manifest.json | cut -d ":" -f2
+    register: my_ami
+  - name: AMI name
+    debug: msg={{ my_ami.stdout }}
+  - name: Creating launch configuration
+    ec2_lc:
+      name: "test-packer-lc-{{timestamp.stdout}}"
+      region: "{{region}}"
+      image_id: "{{ my_ami.stdout }}"
+      assign_public_ip: "yes"
+      key_name: "{{ key_name }}"
+      security_groups: "{{ security_groups }}"
+      instance_type: t2.micro
+      volumes:
+      - device_name: /dev/sda1
+        volume_size: 30
+        device_type: gp2
+        iops: 150
+        delete_on_termination: true
+        encrypted: false
+    register: ec2_lc_info
+  - name: Updating ASG
+    ec2_asg:
+      name: "test-packer-asg-{{timestamp.stdout}}"
+      region: "{{ region }}"
+      load_balancers: "{{ elb }}"
+      availability_zones: [ 'ap-northeast-2a', 'ap-northeast-2c' ]
+      vpc_zone_identifier: [ 'subnet-0ad3bdff6fc47361c', 'subnet-0073875a56b1a9fd4' ]
+      launch_config_name: "{{ ec2_lc_info.name }}"
+      min_size: 0
+      max_size: 0
+      desired_capacity: 0
+      target_group_arns: "arn:aws:elasticloadbalancing:ap-northeast-2:367072688873:targetgroup/kr-file-prod-tg-blue/18aaff4e6a29702f"
+      tags:
+      - environment: production
+        propagate_at_launch: no
+    register: ec2_asg_result
