@@ -1,0 +1,36 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "ami_name": "test-packer-{{timestamp}}",
+            "instance_type": "t2.micro",
+            "region": "ap-northeast-2",
+            "source_ami": "ami-0ba5cd124d7a79612",
+            "vpc_id": "vpc-064ff5a89a1c6c6f4",
+            "subnet_id": "subnet-05825b5b930723a31",
+            "ssh_username": "ubuntu",
+            "ami_virtualization_type": "hvm",
+            "tags": {
+                "Name": "test-packer-{{timestamp}}",
+                "project": "scloud"
+              }
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline":[
+                "touch /home/ubuntu/welcome2.txt"
+            ]
+        }
+    ],
+
+    "post-processors": [
+        {
+          "type": "manifest",
+          "output": "manifest.json",
+          "strip_path": true
+        }
+      ]
+}
