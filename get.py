@@ -1,6 +1,7 @@
+#!/usr/bin/python3
 import os
 import requests
-import json
+#import json
 
 
 print(os.path.isfile("ryw.html"))
@@ -12,7 +13,7 @@ file.close()
 
 value='1234'
 params={'code':value}
-URL='http://3.112.213.226:8080'
+URL='http://3.112.213.226:8080/test/yw.html'
 response=requests.get(URL, params=params)
 print(response.status_code)
 print(response.url)
@@ -22,7 +23,7 @@ print(response.url)
 response=requests.post(URL, data=params)
 print(response.status_code)
 print(response.url)
-#print(response.text)
+print(response.text)
 
 
 
