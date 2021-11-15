@@ -13,3 +13,5 @@ for code in l:
         break
     print(re.status_code)
 
+#<p><img src="https://image.shutterstock.com/image-photo/closeup-portrait-laughing-brunette-girl-600w-1082155934.jpg" alt="smile"/></p>
+#<p><img src="https://image.shutterstock.com/image-photo/cracks-on-surface-blue-ice-600w-655427254.jpg" alt="winter"/></p>
